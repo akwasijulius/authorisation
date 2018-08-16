@@ -36,6 +36,7 @@ would be DENIED ;
 The soloution was written with just Java 8 and Junit, no other framework
 
 ### Build
+This would build and run in any IDE
 
 Maven:
 

@@ -33,7 +33,7 @@ would be DENIED ;
 
 ## Solution
 
-The soloution was written with Java 8 and Junit, no other framework
+The soloution was written with just Java 8 and Junit, no other framework
 
 ### Build
 

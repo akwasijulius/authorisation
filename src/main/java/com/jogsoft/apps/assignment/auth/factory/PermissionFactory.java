@@ -22,26 +22,27 @@ public class PermissionFactory {
      * @return permission
      */
     public static Permission createPermission(PermissionType permissionType, String data)  {
-        if (permissionType == RO_PERM){
-            String[] splits = data.split(":");
-            String[] actionValues = (splits[0].split(","));
-            Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
-            return new PermissionObject(RO_PERM.getType(), actions, Collections.singleton(splits[1]));
-        }
-        else if(permissionType == RW_PERM){
-            String[] splits = data.split(":");
-            String[] actionValues = (splits[0].split(","));
-            Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
-            return new PermissionObject(RW_PERM.getType(), actions, Collections.singleton(splits[1]));
-        }
-        else if(permissionType == FOLDER_PERM){
-            String[] splits = data.split(":");
-            String[] actionValues = (splits[0].split(","));
-            Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
-            return new PermissionObject(FOLDER_PERM.name(), actions, Collections.singleton(splits[1]));
-        }
-        else{
-            throw new IllegalArgumentException("Invalid permission type" + permissionType);
+        switch (permissionType) {
+            case RO_PERM: {
+                String[] splits = data.split(":");
+                String[] actionValues = (splits[0].split(","));
+                Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
+                return new PermissionObject(RO_PERM.getType(), actions, Collections.singleton(splits[1]));
+            }
+            case RW_PERM: {
+                String[] splits = data.split(":");
+                String[] actionValues = (splits[0].split(","));
+                Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
+                return new PermissionObject(RW_PERM.getType(), actions, Collections.singleton(splits[1]));
+            }
+            case FOLDER_PERM: {
+                String[] splits = data.split(":");
+                String[] actionValues = (splits[0].split(","));
+                Set<String> actions = new HashSet<>(Arrays.asList(actionValues));
+                return new PermissionObject(FOLDER_PERM.name(), actions, Collections.singleton(splits[1]));
+            }
+            default:
+                throw new IllegalArgumentException("Invalid permission type" + permissionType);
         }
     }
 }
